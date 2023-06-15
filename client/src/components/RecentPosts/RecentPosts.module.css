@@ -1,0 +1,17 @@
+.recentPostParagraph {
+    font-size: 24px;
+    @apply font-semibold;
+ }
+ 
+ .recentPostContainer {
+    padding: 30px 0;
+    gap: var(--lev4-gap);
+ 
+    @apply grid grid-cols-2;
+ }
+ 
+ .recentPostContainerCol {
+    gap: var(--lev4-gap);
+    @apply flex flex-col;
+ }
+ 

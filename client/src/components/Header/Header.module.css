@@ -1,0 +1,18 @@
+.blogHeader {
+    padding: 30px 0px 30px 0px;
+ }
+ 
+ .mainBlogContainer {
+    max-height: 295px;
+    margin: 50px auto 30px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+ }
+ 
+ .mainBlogContainer h1 {
+    color: var(--black);
+    font-weight: 500;
+    font-size: 245px;
+    line-height: 295px;
+ }
+ 
