@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"flag"
 	"fmt"
 	"log"
@@ -17,7 +16,7 @@ func main() {
 
 	env.Setup()
 
-	db, err := sql.Open("mysql", dsn)
+	// db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal("Failed to connect to the database:", err)
 	}
