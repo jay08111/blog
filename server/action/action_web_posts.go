@@ -5,18 +5,19 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-func (m *PostAction) GetAllPosts(ctx echo.Context) error {
+func (m *WebAction) GetAllPosts(ctx echo.Context) error {
+
 	logrus.Print("hey")
 
 	return nil
 }
 
-func (m *PostAction) GetRecentPosts(ctx echo.Context) error {
+func (m *WebAction) GetRecentPosts(ctx echo.Context) error {
 	logrus.Print("hey")
 	return nil
 }
 
-func (m *PostAction) GetSinglePost(ctx echo.Context) error {
+func (m *WebAction) GetSinglePost(ctx echo.Context) error {
 	logrus.Print("hey")
 	return nil
 }

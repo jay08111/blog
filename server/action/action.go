@@ -1,10 +1,10 @@
 package action
 
-type PostAction struct {
+type WebAction struct {
 }
 
-var Post *PostAction
+var Web *WebAction
 
 func init() {
-	Post = &PostAction{}
+	Web = &WebAction{}
 }

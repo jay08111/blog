@@ -1,15 +1,10 @@
 package main
 
 import (
-	"database/sql"
 	"flag"
-	"fmt"
-	"log"
-	"net/http"
 	"server/env"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/labstack/echo/v4"
 )
 
 func main() {
@@ -17,38 +12,27 @@ func main() {
 
 	env.Setup()
 
-	// dsn := "hoyeoun:028137jy@tcp(localhost:3306)/blog"
+	var echoRouter Router
 
-	db, err := sql.Open("mysql", dsn)
-	if err != nil {
-		log.Fatal("Failed to connect to the database:", err)
-	}
+	echoRouter.Init()
 
-	err = db.Ping()
+	// // dsn := "hoyeoun:028137jy@tcp(localhost:3306)/blog"
 
-	if err != nil {
-		log.Fatal("Failed to pint to the database:", err)
-	}
+	// db, err := sql.Open("mysql", dsn)
+	// if err != nil {
+	// 	log.Fatal("Failed to connect to the database:", err)
+	// }
 
-	fmt.Println("Connected to the database!")
+	// err = db.Ping()
 
-	defer db.Close()
+	// if err != nil {
+	// 	log.Fatal("Failed to pint to the database:", err)
+	// }
 
-	e := echo.New()
+	// fmt.Println("Connected to the database!")
 
-	e.GET("/", func(c echo.Context) error {
-		rows, err := db.Query("SELECT * FROM posts")
-		if err != nil {
-			log.Println("Failed to execute query:", err)
-			return c.String(http.StatusInternalServerError, "Internal server error")
-		}
+	// defer db.Close()
 
-		defer rows.Close()
+	// e := echo.New()
 
-		ret := "hi"
-
-		return c.JSON(http.StatusOK, ret)
-	})
-
-	e.Logger.Fatal(e.Start(":1323"))
 }

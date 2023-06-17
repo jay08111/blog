@@ -9,26 +9,27 @@ import (
 )
 
 type Route struct {
-	Method string
-	Path   string
-	Action echo.HandlerFunc
+	Method     string
+	Path       string
+	Action     echo.HandlerFunc
+	Middleware []echo.MiddlewareFunc
 }
 
-var GetBlogPostRouteMap = []*Route{
+var BlogPostRouteMap = []*Route{
 	{
 		Method: http.MethodGet,
 		Path:   "/v1/web/posts",
-		Action: action.Post.GetAllPosts,
+		Action: action.Web.GetAllPosts,
 	},
 	{
 		Method: http.MethodGet,
 		Path:   "/v1/web/single/:id",
-		Action: action.Post.GetSinglePost,
+		Action: action.Web.GetSinglePost,
 	},
 	{
 		Method: http.MethodGet,
 		Path:   "/v1/web/recent_posts",
-		Action: action.Post.GetRecentPosts,
+		Action: action.Web.GetRecentPosts,
 	},
 }
 
@@ -40,7 +41,7 @@ func (m *Router) Init() {
 	m.Server = echo.New()
 
 	m.addRoute(
-		GetBlogPostRouteMap,
+		BlogPostRouteMap,
 	)
 
 	m.Server.Use(middleware.CORSWithConfig(middleware.CORSConfig{
