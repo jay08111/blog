@@ -51,6 +51,10 @@ func (m *Router) Init() {
 	}))
 }
 
+func (m *Router) Run(addr string) error {
+	return m.Server.Start(addr)
+}
+
 func (m *Router) addRoute(routeMaps ...[]*Route) {
 	for _, routeMap := range routeMaps {
 		for i := range routeMap {

@@ -2,37 +2,23 @@ package main
 
 import (
 	"flag"
+	"server/domain"
 	"server/env"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
+	configName := flag.String("config", "", "config file name")
+
 	flag.Parse()
 
-	env.Setup()
+	env.Setup(*configName)
 
-	var echoRouter Router
+	// var echoRouter Router
+	// echoRouter.Init()
 
-	echoRouter.Init()
+	domain.Init()
 
-	// // dsn := "hoyeoun:028137jy@tcp(localhost:3306)/blog"
+	// defer domain.Close()
 
-	// db, err := sql.Open("mysql", dsn)
-	// if err != nil {
-	// 	log.Fatal("Failed to connect to the database:", err)
-	// }
-
-	// err = db.Ping()
-
-	// if err != nil {
-	// 	log.Fatal("Failed to pint to the database:", err)
-	// }
-
-	// fmt.Println("Connected to the database!")
-
-	// defer db.Close()
-
-	// e := echo.New()
-
+	// _ = echoRouter.Run(env.ServerSetting.Port)
 }
