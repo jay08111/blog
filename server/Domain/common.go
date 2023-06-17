@@ -20,10 +20,9 @@ func MySQLBuildQueryString(user, pass, dbname, host string, port int) string {
 	if port == 0 {
 		port = 3306
 	}
+
 	config.Addr += ":" + strconv.Itoa(port)
 
-	// MySQL is a bad, and by default reads date/datetime into a []byte
-	// instead of a time.Time. Tell it to stop being a bad.
 	config.ParseTime = true
 
 	return config.FormatDSN()

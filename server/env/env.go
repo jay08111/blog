@@ -1,8 +1,6 @@
 package env
 
 import (
-	"path/filepath"
-
 	"github.com/pelletier/go-toml"
 	"github.com/sirupsen/logrus"
 )
@@ -23,19 +21,10 @@ var DatabaseSetting Database
 
 var ServerSetting Server
 
-func Setup(filePath string) error {
-	rootDir, _ := filepath.Abs("./")
+func Setup() error {
 
-	var configToml *toml.Tree
-	var err error
+	configToml, err := toml.LoadFile("config/dev-env.toml")
 
-	if len(filePath) > 0 {
-		configToml, err = toml.LoadFile(rootDir + filePath)
-	} else {
-		configToml, err = toml.LoadFile(rootDir + "\\config\\dev-env.toml")
-	}
-
-	// configToml, err := toml.LoadFile("db.toml")
 	if err != nil {
 		logrus.Error(err)
 		return err
