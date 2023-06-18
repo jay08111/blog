@@ -2,10 +2,12 @@ package domain
 
 import (
 	"database/sql"
+	"fmt"
 	"server/e"
 	"server/env"
 	"time"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/sirupsen/logrus"
 )
 
@@ -19,13 +21,15 @@ var MainDB *sql.DB
 func Init() {
 	var err error
 
-	MainDB, err := sql.Open("mysql", MySQLBuildQueryString(
-		env.DatabaseSetting.User,
-		env.DatabaseSetting.Password,
-		env.DatabaseSetting.DBName,
-		env.DatabaseSetting.Host,
-		env.DatabaseSetting.Port,
-	))
+	dbHost := env.DatabaseSetting.Host
+	dbPort := env.DatabaseSetting.Port
+	dbUser := env.DatabaseSetting.User
+	dbName := env.DatabaseSetting.DBName
+	dbPassword := env.DatabaseSetting.Password
+
+	dbConnection := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName)
+
+	MainDB, err := sql.Open("mysql", dbConnection)
 
 	if err != nil {
 		logrus.Error(e.DomainErrInit1, err)
