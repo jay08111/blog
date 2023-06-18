@@ -14,8 +14,7 @@ const RecentPosts = () => {
             className="h-48"
             width={100}
             height={0}
-            loader={() => MOCK_RECENT_POST[0].img}
-            src={MOCK_RECENT_POST[0].img}
+            src={`${MOCK_RECENT_POST[0].img}.png`}
             alt={MOCK_RECENT_POST[0].content}
           />
           <div className="h-full">
@@ -32,8 +31,7 @@ const RecentPosts = () => {
               className="h-48"
               width={100}
               height={0}
-              loader={() => MOCK_RECENT_POST[0].img}
-              src={MOCK_RECENT_POST[0].img}
+              src={`${MOCK_RECENT_POST[0].img}.png`}
               alt={MOCK_RECENT_POST[0].content}
             />
             <div className="small-margin w-full">
@@ -49,8 +47,7 @@ const RecentPosts = () => {
               className="h-48"
               width={100}
               height={0}
-              loader={() => MOCK_RECENT_POST[0].img}
-              src={MOCK_RECENT_POST[0].img}
+              src={`${MOCK_RECENT_POST[0].img}.png`}
               alt={MOCK_RECENT_POST[0].content}
             />
             <div className="small-margin w-full">
