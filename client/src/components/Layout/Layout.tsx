@@ -1,20 +1,19 @@
-import Header from '../Header/Header'
-import s from './Layout.module.css'
-import Main from '../Main/Main'
+import Header from "../Header/Header";
+import s from "./Layout.module.css";
 
 interface Props {
-   children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
-   return (
-      <>
-         <div className={s.allWrapper}>
-            <Header />
-            <main>{children}</main>
-         </div>
-      </>
-   )
-}
+  return (
+    <>
+      <div className={s.allWrapper}>
+        <Header />
+        <main>{children}</main>
+      </div>
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

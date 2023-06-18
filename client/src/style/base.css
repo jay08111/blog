@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --border-color: rgba(0, 0, 0, 0.34);
+  --black: #1a1a1a;
+  --max-width: 1216px;
+
+  --lev1-gap: 8px;
+  --lev2-gap: 12px;
+  --lev3-gap: 24px;
+  --lev4-gap: 32px;
+  --lev5-gap: 48px;
+
+  --black: #000;
+  --white: #fff;
+
+  --purple: #6941c6;
+  --blue: #026aa2;
+  --red: #c11574;
+  --green: #027a48;
+  --brown: #c4320a;
+
+  --bcg-blue: #f0f9ff;
+  --bcg-red: #fdf2fa;
+  --bcg-green: #ecfdf3;
+  --bcg-brown: #fff6ed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  @apply w-full object-cover;
+}
+
+.small-margin {
+  margin-left: var(--lev2-gap);
+}

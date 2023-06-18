@@ -1,7 +1,10 @@
-
+import Layout from "@/components/Layout/Layout";
+import Main from "@/components/Main/Main";
 
 export default function Home() {
   return (
-  <h1>hi</h1>
-  )
+    <Layout>
+      <Main />
+    </Layout>
+  );
 }
