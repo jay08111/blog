@@ -49,6 +49,7 @@ func (m *Router) Init() {
 			"http://localhost:3000",
 		},
 	}))
+
 }
 
 func (m *Router) Run(addr string) error {

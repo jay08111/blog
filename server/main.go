@@ -8,12 +8,10 @@ import (
 func main() {
 	env.Setup()
 
-	// var echoRouter Router
-	// echoRouter.Init()
+	var echoRouter Router
+	echoRouter.Init()
 
 	domain.Init()
 
-	// defer domain.Close()
-
-	// _ = echoRouter.Run(env.ServerSetting.Port)
+	_ = echoRouter.Run(env.ServerSetting.Port)
 }
