@@ -10,7 +10,7 @@ type Database struct {
 	Password string
 	Host     string
 	DBName   string
-	Port     string
+	Port     int
 }
 
 type Server struct {
