@@ -29,7 +29,7 @@ func Init() {
 
 	dbConnection := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, dbPort, dbName)
 
-	MainDB, err := sql.Open("mysql", dbConnection)
+	MainDB, err = sql.Open("mysql", dbConnection)
 
 	if err != nil {
 		logrus.Error(e.DomainErrInit1, err)

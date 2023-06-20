@@ -1,13 +1,12 @@
 package domain
 
-import "server/models"
+import (
+	"server/models"
+)
 
 func PostsSelectAll() ([]*models.POSTS, error) {
 	db := MainDB
-
-	q := `SELECT * FROM posts`
-
-	rows, err := db.Query(q)
+	rows, err := db.Query(`SELECT * FROM posts`)
 
 	if err != nil {
 		return nil, err
@@ -15,21 +14,18 @@ func PostsSelectAll() ([]*models.POSTS, error) {
 
 	defer rows.Close()
 
-	var posts []*models.POSTS
+	posts := make([]*models.POSTS, 0)
 
 	for rows.Next() {
-		post := &models.POSTS{}
-		err := rows.Scan()
+		var post models.POSTS
+
+		err := rows.Scan(&post.Id, &post.Title, &post.Desc, &post.Img, &post.Updated_at)
 
 		if err != nil {
 			return nil, err
 		}
 
-		posts = append(posts, post)
-	}
-
-	if err = rows.Err(); err != nil {
-		return nil, err
+		posts = append(posts, &post)
 	}
 
 	return posts, nil

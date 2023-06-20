@@ -1,22 +1,28 @@
 package action
 
 import (
-	"github.com/labstack/echo/v4"
-	"github.com/sirupsen/logrus"
+	"net/http"
+	"server/domain"
 
-	"server/service"
+	resp "server/responder"
+
+	"github.com/labstack/echo/v4"
 )
 
 func (m *WebAction) GetAllPosts(ctx echo.Context) error {
-	return service.GetAllBlogPosts(ctx)
+	getResult, err := domain.PostsSelectAll()
+
+	if err != nil {
+		return resp.JsonResponder.Response(ctx, http.StatusServiceUnavailable, err)
+	}
+
+	return resp.JsonResponder.Response(ctx, http.StatusOK, getResult)
 }
 
 func (m *WebAction) GetRecentPosts(ctx echo.Context) error {
-	logrus.Print("hey")
 	return nil
 }
 
 func (m *WebAction) GetSinglePost(ctx echo.Context) error {
-	logrus.Print("hey")
 	return nil
 }
