@@ -10,7 +10,7 @@ import (
 )
 
 func (m *WebAction) GetAllPosts(ctx echo.Context) error {
-	getResult, err := domain.PostsSelectAll()
+	getResult, err := domain.RetAllPosts(domain.MainDB)
 
 	if err != nil {
 		return resp.JsonResponder.Response(ctx, http.StatusServiceUnavailable, err)
@@ -20,9 +20,29 @@ func (m *WebAction) GetAllPosts(ctx echo.Context) error {
 }
 
 func (m *WebAction) GetRecentPosts(ctx echo.Context) error {
-	return nil
+	getRecentPosts, err := domain.RetRecentPosts(ctx, domain.MainDB)
+
+	if err != nil {
+		return resp.JsonResponder.Response(ctx, http.StatusServiceUnavailable, err)
+	}
+
+	return resp.JsonResponder.Response(ctx, http.StatusOK, getRecentPosts)
+
 }
 
 func (m *WebAction) GetSinglePost(ctx echo.Context) error {
-	return nil
+	id, err := getIntParam(ctx, "id")
+
+	if err != nil {
+		return resp.JsonResponder.Response(ctx, http.StatusBadRequest, err)
+	}
+
+	getSinglePost, err := domain.RetSinglePost(ctx, domain.MainDB, id)
+
+	if err != nil {
+		return resp.JsonResponder.Response(ctx, http.StatusServiceUnavailable, err)
+	}
+
+	return resp.JsonResponder.Response(ctx, http.StatusOK, getSinglePost)
+
 }

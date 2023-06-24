@@ -2,8 +2,8 @@ package models
 
 type POSTS struct {
 	Id         int     `json:"id"`
-	Desc       string  `json:"desc"`
+	Desc       string  `json:"description"`
 	Title      string  `json:"title"`
 	Img        *string `json:"img,omitempty"`
-	Updated_at float32 `json:"updated_at"`
+	Updated_At float32 `json:"updated_at"`
 }

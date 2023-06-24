@@ -23,7 +23,7 @@ var BlogPostRouteMap = []*Route{
 	},
 	{
 		Method: http.MethodGet,
-		Path:   "/v1/web/single/:id",
+		Path:   "/v1/web/posts/:id",
 		Action: action.Web.GetSinglePost,
 	},
 	{
