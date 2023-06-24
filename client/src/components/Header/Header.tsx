@@ -1,13 +1,13 @@
 import React from "react";
 import s from "./Header.module.css";
-import NavBar from "../Navbar/Navbar";
+import NavBar from "@/components/Navbar/Navbar";
 
 const Header: React.FC = () => {
   return (
     <header className={s.blogHeader}>
       <NavBar />
       <div className={s.mainBlogContainer}>
-        <h1>THE BLOG</h1>
+        <h1>THE BLOG </h1>
       </div>
     </header>
   );

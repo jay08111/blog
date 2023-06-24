@@ -1,26 +1,25 @@
 .navHeader {
-    margin: 0 auto;
-    @apply w-full;
- }
- 
- .navInnerContainer {
-    padding: 10px 0px 10px 0px;
-    @apply flex justify-between;
- }
- 
- .navName {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--black);
- }
- 
- .blogMenu {
-    gap: 14px;
-    font-size: 20px;
-    @apply flex;
- }
- 
- .blogMenu li {
-    font-weight: 200;
- }
- 
+  margin: 0 auto;
+  @apply w-full;
+}
+
+.navInnerContainer {
+  padding: 10px 0px 10px 0px;
+  @apply flex justify-end;
+}
+
+.navName {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.blogMenu {
+  gap: 14px;
+  font-size: 20px;
+  @apply flex;
+}
+
+.blogMenu li {
+  font-weight: 200;
+}
