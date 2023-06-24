@@ -28,7 +28,7 @@ var BlogPostRouteMap = []*Route{
 	},
 	{
 		Method: http.MethodGet,
-		Path:   "/v1/web/recent_posts",
+		Path:   "/v1/web/posts/recent",
 		Action: action.Web.GetRecentPosts,
 	},
 }

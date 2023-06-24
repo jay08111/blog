@@ -8,7 +8,12 @@ import (
 )
 
 func RetAllPosts(db *sql.DB) ([]*models.POSTS, error) {
-	rows, err := db.Query(`SELECT id, description, title, img, updated_at FROM posts`)
+	rows, err := db.Query(`
+	SELECT * FROM posts 
+	ORDER BY updated_at ASC
+	LIMIT 10000
+	OFFSET 4
+	`)
 
 	if err != nil {
 		return nil, err
@@ -34,7 +39,14 @@ func RetAllPosts(db *sql.DB) ([]*models.POSTS, error) {
 }
 
 func RetSinglePost(ctx echo.Context, db *sql.DB, id int) (*models.POSTS, error) {
-	row := db.QueryRow(`SELECT id, description, title, COALESCE(img, '') AS img, updated_at FROM posts WHERE id = ?`, id)
+	row := db.QueryRow(`
+	SELECT 
+	id, 
+	description, 
+	title, 
+	COALESCE(img, '') AS img, 
+	updated_at 
+	FROM posts WHERE id = ?`, id)
 
 	var singlePost models.POSTS
 
@@ -48,5 +60,35 @@ func RetSinglePost(ctx echo.Context, db *sql.DB, id int) (*models.POSTS, error) 
 }
 
 func RetRecentPosts(ctx echo.Context, db *sql.DB) ([]*models.POSTS, error) {
-	return nil, nil
+	rows, err := db.Query(`
+	SELECT id,
+	description, title,
+	COALESCE(img, '') AS img, 
+	updated_at 
+	FROM posts
+	ORDER BY updated_at ASC
+	LIMIT 4
+	`)
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer rows.Close()
+
+	recentPosts := make([]*models.POSTS, 0)
+
+	for rows.Next() {
+		var recentPost models.POSTS
+
+		err := rows.Scan(&recentPost.Id, &recentPost.Desc, &recentPost.Img, &recentPost.Title, &recentPost.Updated_At)
+
+		if err != nil {
+			return nil, err
+		}
+
+		recentPosts = append(recentPosts, &recentPost)
+	}
+
+	return recentPosts, nil
 }
